@@ -1,0 +1,18 @@
+CUDA_VISIBLE_DEVICES=0 WANDB_DISABLED=true python3 -u src/src-qa/run_qa.py \
+    --model_name_or_path models/bio-linkbert-base \
+    --train_file data/data-qa/bioasq_factoid_repeat3_hf/train.json \
+    --validation_file data/data-qa/bioasq_factoid_repeat3_hf/dev.json \
+    --test_file data/data-qa/bioasq_factoid_repeat3_hf/test.json \
+    --do_train --do_eval --do_predict \
+    --preprocessing_num_workers 10 \
+    --per_device_train_batch_size 2 \
+    --gradient_accumulation_steps 8 \
+    --fp16 \
+    --learning_rate 3e-5 \
+    --num_train_epochs 50 \
+    --max_seq_length 512 \
+    --doc_stride 128 \
+    --save_strategy no \
+    --evaluation_strategy no \
+    --output_dir output/base/bioasq_factoid_repeat3_train \
+    --overwrite_output_dir

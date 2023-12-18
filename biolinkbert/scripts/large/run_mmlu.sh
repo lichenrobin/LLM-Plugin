@@ -1,0 +1,18 @@
+CUDA_VISIBLE_DEVICES=0 WANDB_DISABLED=true python3 -u src/src-mc/run_multiple_choice.py \
+    --model_name_or_path models/bio-linkbert-large \
+    --train_file data/data-mc/mmlu_hf/train.json \
+    --validation_file data/data-mc/mmlu_hf/dev.json \
+    --test_file data/data-mc/mmlu_hf/test.json \
+    --do_train --do_eval --do_predict \
+    --preprocessing_num_workers 10 \
+    --per_device_train_batch_size 2 \
+    --gradient_accumulation_steps 64 \
+    --fp16 \
+    --learning_rate 2e-5 \
+    --warmup_steps 100 \
+    --num_train_epochs 5 \
+    --max_seq_length 512 \
+    --save_strategy no \
+    --evaluation_strategy no \
+    --output_dir output/large/mmlu_train2 \
+    --overwrite_output_dir
