@@ -15,7 +15,7 @@ def get_response(prompt, all_error=0):
         chatgpt_response = openai.ChatCompletion.create(
             model=model_name,
             messages=prompt,
-            temperature=0
+            temperature=0.2
         )
         # time.sleep(1)
     except Exception as e:
@@ -47,7 +47,7 @@ if __name__ == "__main__":
         chatgpt_response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=prompt,
-            temperature=0
+            temperature=0.2
         )
         # time.sleep(1)
         print(chatgpt_response)
